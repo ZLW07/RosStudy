@@ -35,7 +35,7 @@
             </material>
         </visual>
     </link>
-    <joint name="baseTolink1" type="continuous">
+    <joint name="BaseToLink_1" type="continuous">
         <parent link="base_link"/>
         <child link="link_1"/>
         <origin xyz="0 0 0.375" rpy="${-PI/2} 0 0"/>
@@ -53,7 +53,7 @@
             </material>
         </visual>
     </link>
-    <joint name="link1Tolink2" type="continuous">
+    <joint name="Link_1ToLink_2" type="continuous">
         <parent link="link_1"/>
         <child link="link_2"/>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -71,7 +71,7 @@
             </material>
         </visual>
     </link>
-    <joint name="link_2Tolink_3" type="continuous">
+    <joint name="Link_2ToLink_3" type="continuous">
         <parent link="link_2"/>
         <child link="link_3"/>
         <origin xyz="0 -0.4 0.02" rpy="0 0 0"/>
@@ -89,7 +89,7 @@
             </material>
         </visual>
     </link>
-    <joint name="link_3Tolink_4" type="continuous">
+    <joint name="Link_3ToLink_4" type="continuous">
         <parent link="link_3"/>
         <child link="link_4"/>
         <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
@@ -107,7 +107,7 @@
             </material>
         </visual>
     </link>
-    <joint name="link_4Tolink_5" type="continuous">
+    <joint name="Link_4ToLink_5" type="continuous">
         <parent link="link_4"/>
         <child link="link_5"/>
         <origin xyz="0 0 0.45" rpy="${-PI/2} 0 0"/>
@@ -126,7 +126,7 @@
             </material>
         </visual>
     </link>
-    <joint name="link_5Tolink_6" type="continuous">
+    <joint name="Link_5ToLink_6" type="continuous">
         <parent link="link_5"/>
         <child link="link_6"/>
         <origin xyz="0 -0.07 0" rpy="${PI/2} 0 0"/>
