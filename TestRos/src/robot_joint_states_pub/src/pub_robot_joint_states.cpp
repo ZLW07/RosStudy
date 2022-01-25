@@ -28,17 +28,32 @@ int main(int argc, char *argv[])
     oJointStates.position[4] = 0;
     oJointStates.position[5] = 0;
     ros::Rate r(10);
-    int ii = 180;
+    int ii = 90;
+    bool bTemp = true;
     while(ros::ok())
     {
-        oJointStates.position[2] = ii * dTrans;
-        oJointStates.header.stamp = ros::Time::now();
-        pub.publish(oJointStates);
-        if (ii == 0)
+        if (bTemp)
         {
-            ii = 180;
+            oJointStates.position[2] = ii * dTrans;
+            oJointStates.header.stamp = ros::Time::now();
+            pub.publish(oJointStates);
+            if (ii <=10)
+            {
+               bTemp = false;
+            }
+            ii--;
         }
-        ii--;
+        else
+        {
+            oJointStates.position[2] = ii * dTrans;
+            oJointStates.header.stamp = ros::Time::now();
+            pub.publish(oJointStates);
+            if (ii >= 150)
+            {
+                bTemp = true;
+            }
+            ii++;
+        }
         r.sleep();
         ros::spinOnce();
     }
