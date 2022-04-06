@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
         if (bTemp)
         {
             oJointStates.position[2] = ii * dTrans;
+            oJointStates.position[0] = ii * dTrans;
             oJointStates.header.stamp = ros::Time::now();
             pub.publish(oJointStates);
             if (ii <=10)
@@ -46,6 +47,7 @@ int main(int argc, char *argv[])
         else
         {
             oJointStates.position[2] = ii * dTrans;
+            oJointStates.position[0] = ii * dTrans;
             oJointStates.header.stamp = ros::Time::now();
             pub.publish(oJointStates);
             if (ii >= 150)
