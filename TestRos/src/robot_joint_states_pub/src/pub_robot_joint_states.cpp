@@ -1,7 +1,7 @@
 //
 // Created by wei on 2022/1/20.
 //
-
+#include "Log/log.h"
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
 
@@ -28,14 +28,13 @@ int main(int argc, char *argv[])
     oJointStates.position[4] = 0;
     oJointStates.position[5] = 0;
     ros::Rate r(10);
-    int ii = 90;
+    int ii = 150;
     bool bTemp = true;
     while(ros::ok())
     {
         if (bTemp)
         {
             oJointStates.position[2] = ii * dTrans;
-            oJointStates.position[0] = ii * dTrans;
             oJointStates.header.stamp = ros::Time::now();
             pub.publish(oJointStates);
             if (ii <=10)
@@ -47,7 +46,6 @@ int main(int argc, char *argv[])
         else
         {
             oJointStates.position[2] = ii * dTrans;
-            oJointStates.position[0] = ii * dTrans;
             oJointStates.header.stamp = ros::Time::now();
             pub.publish(oJointStates);
             if (ii >= 150)

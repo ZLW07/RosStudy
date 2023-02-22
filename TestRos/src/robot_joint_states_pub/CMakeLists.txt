@@ -115,10 +115,16 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+set(INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  ${INCLUDE_PATH}
 )
+
+set(LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../lib)
+link_directories(${LIB_PATH})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -153,7 +159,7 @@ add_executable(pub_joint_state src/pub_robot_joint_states.cpp)
 # )
 
 target_link_libraries(pub_joint_state
-   ${catkin_LIBRARIES}
+   ${catkin_LIBRARIES} Log
  )
 
 #############
