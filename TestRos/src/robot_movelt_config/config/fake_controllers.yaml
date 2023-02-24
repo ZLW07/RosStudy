@@ -1,0 +1,13 @@
+controller_list:
+  - name: fake_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - BaseToLink_1
+      - Link_1ToLink_2
+      - Link_2ToLink_3
+      - Link_3ToLink_4
+      - Link_4ToLink_5
+      - Link_5ToLink_6
+initial:  # Define initial robot poses per group
+  - group: arm
+    pose: Home

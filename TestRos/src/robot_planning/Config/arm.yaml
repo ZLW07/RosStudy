@@ -1,0 +1,9 @@
+joints: {
+BaseToLink_1: {id: 1, max_angle: 169.6, min_angle: -169.6, max_speed: 90},
+Link_1ToLink_2: {id: 2,  max_angle: 169.6, min_angle: -169.6, max_speed: 90},
+Link_2ToLink_3: {id: 3,  max_angle: 169.6, min_angle: -169.6, max_speed: 90},
+Link_3ToLink_4: {id: 4,  max_angle: 169.6, min_angle: -169.6, max_speed: 90},
+Link_4ToLink_5: {id: 5,  max_angle: 169.6, min_angle: -169.6, max_speed: 90},
+Link_5ToLink_6: {id: 6,  max_angle: 169.6, min_angle: -169.6, max_speed: 90},}
+controllers: {fake_arm_controller: {type: follow_controller, joints: [BaseToLink_1, Link_1ToLink_2, Link_2ToLink_3, Link_4ToLink_5, Link_5ToLink_6], action_name: arm_controller/follow_joint_trajectory, onboard: False}}
+

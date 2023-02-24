@@ -3,43 +3,55 @@
 
     <xacro:property name="PI" value="3.1415926"/>
 
-    <xacro:property name="TrolleyPath" value="package://TestInput/urdf/model/1.STL"/>
-    <xacro:property name="Link1Path" value="package://TestInput/urdf/model/2.STL"/>
-    <xacro:property name="Link2Path" value="package://TestInput/urdf/model/3.STL"/>
-    <xacro:property name="Link3Path" value="package://TestInput/urdf/model/4.STL"/>
-    <xacro:property name="Link4Path" value="package://TestInput/urdf/model/5.STL"/>
-    <xacro:property name="Link5Path" value="package://TestInput/urdf/model/6.STL"/>
-    <xacro:property name="Link6Path" value="package://TestInput/urdf/model/7.STL"/>
+    <xacro:property name="TrolleyPath" value="package://model_source/urdf/model/1.STL"/>
+    <xacro:property name="Link1Path" value="package://model_source/urdf/model/2.STL"/>
+    <xacro:property name="Link2Path" value="package://model_source/urdf/model/3.STL"/>
+    <xacro:property name="Link3Path" value="package://model_source/urdf/model/4.STL"/>
+    <xacro:property name="Link4Path" value="package://model_source/urdf/model/5.STL"/>
+    <xacro:property name="Link5Path" value="package://model_source/urdf/model/6.STL"/>
+    <xacro:property name="Link6Path" value="package://model_source/urdf/model/7.STL"/>
 
     <link name="base_link">
         <visual>
             <geometry>
                 <mesh filename="${TrolleyPath}"/>
-                <!--                <box size="0.5 0.2 0.1" />-->
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <material name="red">
                 <color rgba="1 1 1 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyx="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="${TrolleyPath}"/>
+            </geometry>
+        </collision>
     </link>
     <link name="link_1">
         <visual>
             <geometry>
                 <mesh filename="${Link1Path}"/>
-                <!--                <box size="0.5 0.2 0.1" />-->
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <material name="red">
                 <color rgba="1 1 1 1" />
             </material>
         </visual>
+        <collision>
+            <origin xyx="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="${Link1Path}"/>
+            </geometry>
+        </collision>
     </link>
     <joint name="BaseToLink_1" type="continuous">
         <parent link="base_link"/>
         <child link="link_1"/>
         <origin xyz="0 0 0.375" rpy="${-PI/2} 0 0"/>
         <axis xyz="0 1 0"/>
+        <limit effort="300" velocity="1" lower="-2.96" upper="2.96"/>
+        <dynamics damping="50" friction="1"/>
     </joint>
 
     <link name="link_2">
@@ -52,12 +64,20 @@
                 <color rgba="1 1 1 1"/>
             </material>
         </visual>
+        <collision>
+            <origin xyx="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="${Link2Path}"/>
+            </geometry>
+        </collision>
     </link>
     <joint name="Link_1ToLink_2" type="continuous">
         <parent link="link_1"/>
         <child link="link_2"/>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <axis xyz="0 0 1"/>
+        <limit effort="300" velocity="1" lower="-2.96" upper="2.96"/>
+        <dynamics damping="50" friction="1"/>
     </joint>
 
     <link name="link_3">
@@ -70,12 +90,20 @@
                 <color rgba="1 1 1 1"/>
             </material>
         </visual>
+        <collision>
+            <origin xyx="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="${Link3Path}"/>
+            </geometry>
+        </collision>
     </link>
     <joint name="Link_2ToLink_3" type="continuous">
         <parent link="link_2"/>
         <child link="link_3"/>
         <origin xyz="0 -0.4 0.02" rpy="0 0 0"/>
         <axis xyz="0 0 1"/>
+        <limit effort="300" velocity="1" lower="-2.96" upper="2.96"/>
+        <dynamics damping="50" friction="1"/>
     </joint>
 
     <link name="link_4">
@@ -88,6 +116,12 @@
                 <color rgba="1 1 1 1"/>
             </material>
         </visual>
+        <collision>
+            <origin xyx="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="${Link4Path}"/>
+            </geometry>
+        </collision>
     </link>
     <joint name="Link_3ToLink_4" type="continuous">
         <parent link="link_3"/>
@@ -106,12 +140,20 @@
                 <color rgba="1 1 1 1"/>
             </material>
         </visual>
+        <collision>
+            <origin xyx="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="${Link5Path}"/>
+            </geometry>
+        </collision>
     </link>
     <joint name="Link_4ToLink_5" type="continuous">
         <parent link="link_4"/>
         <child link="link_5"/>
         <origin xyz="0 0 0.45" rpy="${-PI/2} 0 0"/>
         <axis xyz="0 0 1"/>
+        <limit effort="300" velocity="1" lower="-2.96" upper="2.96"/>
+        <dynamics damping="50" friction="1"/>
     </joint>
 
 
@@ -125,11 +167,19 @@
                 <color rgba="1 1 1 1"/>
             </material>
         </visual>
+        <collision>
+            <origin xyx="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="${Link6Path}"/>
+            </geometry>
+        </collision>
     </link>
     <joint name="Link_5ToLink_6" type="continuous">
         <parent link="link_5"/>
         <child link="link_6"/>
         <origin xyz="0 -0.07 0" rpy="${PI/2} 0 0"/>
         <axis xyz="0 0 1"/>
+        <limit effort="300" velocity="1" lower="-2.96" upper="2.96"/>
+        <dynamics damping="50" friction="1"/>
     </joint>
 </robot>

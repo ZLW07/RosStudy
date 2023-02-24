@@ -1,0 +1,40 @@
+arm_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - BaseToLink_1
+    - Link_1ToLink_2
+    - Link_2ToLink_3
+    - Link_3ToLink_4
+    - Link_4ToLink_5
+    - Link_5ToLink_6
+  gains:
+    BaseToLink_1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Link_1ToLink_2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Link_2ToLink_3:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Link_3ToLink_4:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Link_4ToLink_5:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Link_5ToLink_6:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

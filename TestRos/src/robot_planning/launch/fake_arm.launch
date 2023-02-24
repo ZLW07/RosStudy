@@ -1,0 +1,23 @@
+<launch>
+    <!-- 不使用仿真时间 -->
+    <param name="/use_sim_time" value="false" />
+
+<!--    &lt;!&ndash; 启动arbotix driver&ndash;&gt;-->
+    <arg name="sim" default="true" />
+
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find model_source)/urdf/xacro/robot_model.urdf.xacro'" />
+
+    <node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen">
+        <rosparam file="$(find robot_planning)/Config/arm.yaml" command="load" />
+        <param name="sim" value="true"/>
+    </node>
+
+    <node pkg="robot_planning" name="robot_planning" type="test_planning" />
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+<!--    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen" />-->
+
+    <include file="$(find robot_movelt_config)/launch/move_group.launch" />
+    <!-- 启动rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_planning)/Config/urdf.rviz" required="true"/>
+
+</launch>

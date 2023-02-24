@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: model_source
+    relative_path: urdf/xacro/robot_model.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/mycar.srdf
+  CONFIG:
+    author_name: wei
+    author_email: 96291@qq.com
+    generated_timestamp: 1677226045
