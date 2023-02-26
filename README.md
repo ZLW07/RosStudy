@@ -8,4 +8,14 @@
    </font>
 3. 运行时先在进工作空间，再启动devel目录下setup.bash(用source命令)
 
+4. 文件依赖安装库： 
+   
+         sudo apt-get install ros-noetic-moveit
+   
+         sudo apt-get install ros-noetic-move-base-msgs
+
+         sudo apt-get install ros-kinetic-arbotix
+
+
+
 
