@@ -22,8 +22,8 @@ int main(int argc, char **argv)
   geometry_msgs::Pose target_pose1;
   target_pose1.orientation.w =  0.726282;
   target_pose1.position.x = 0.03;
-  target_pose1.position.y = 0.2;
-  target_pose1.position.z = 0.5;
+  target_pose1.position.y = 0.21;
+  target_pose1.position.z = 0.51;
   group.setPoseTarget(target_pose1);
 
   //定义一个plan
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 ////markers创建
   visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
 //画线
-  visual_tools.publishTrajectoryLine(my_plan.trajectory_ , joint_link,joint_model_group,rvt::WHITE);
+  visual_tools.publishTrajectoryLine(my_plan.trajectory_ , joint_link,joint_model_group);
   visual_tools.trigger();
 //完成一次规划，与RViz 界面进行交互，使其点击 next 再继续执行。
   visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window to continue the demo");
