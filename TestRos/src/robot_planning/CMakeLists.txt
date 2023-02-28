@@ -15,6 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
         geometry_msgs
         moveit_msgs
         moveit_ros_planning_interface
+        moveit_visual_tools
+        trajectory_msgs
+        visualization_msgs
 )
 
 ## System dependencies are found with CMake's conventions
