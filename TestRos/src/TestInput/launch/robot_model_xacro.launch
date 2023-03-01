@@ -1,11 +1,11 @@
 <launch>
-    <param name="robot_description" command="$(find xacro)/xacro $(find model-source)/urdf/xacro/Robot.urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find model_source)/urdf/xacro/robot_model.urdf.xacro'" />
     <param name="use_gui" value ="true"/>
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find TestInput)/config/uNavBrainModel_1.rviz" required="true"/>
 
-    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+<!--    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>-->
 
-<!--    <node pkg="robot_joint_states_pub" name="robot_joints" type="pub_joint_state" />-->
+    <node pkg="robot_joint_states_pub" name="robot_joints" type="pub_joint_state" />
 <!--    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen" />-->
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 <!--    <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui" output="screen" />-->
