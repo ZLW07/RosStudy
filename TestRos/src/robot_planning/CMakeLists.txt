@@ -122,10 +122,17 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+
+set(INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  ${INCLUDE_PATH}
 )
+
+set(LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../lib)
+link_directories(${LIB_PATH})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -141,6 +148,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
  add_executable(test_planning src/test_random.cpp)
+ add_executable(check_collision src/check_collision.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -155,8 +163,13 @@ include_directories(
 ## Specify libraries to link a library or executable target against
  target_link_libraries(test_planning
    ${catkin_LIBRARIES}
+         Log
  )
 
+target_link_libraries(check_collision
+        ${catkin_LIBRARIES}
+        Log
+        )
 #############
 ## Install ##
 #############

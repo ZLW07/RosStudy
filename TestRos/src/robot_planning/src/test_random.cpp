@@ -1,7 +1,7 @@
 //
 // Created by wei on 2023/2/23.
 //
-
+#include "Log/log.h"
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit_visual_tools/moveit_visual_tools.h>
 
@@ -29,6 +29,7 @@ int main(int argc, char **argv)
   //定义一个plan
   moveit::planning_interface::MoveGroupInterface::Plan my_plan;
 
+    group.setPlannerId("RRTConnectkConfigDefault");
 //用布尔型变量标记运动规划是否成功
   bool success = (group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
 
@@ -45,6 +46,15 @@ int main(int argc, char **argv)
   visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
 //画线
   visual_tools.publishTrajectoryLine(my_plan.trajectory_ , joint_link,joint_model_group);
+  for (int i = 0; i < my_plan.trajectory_.joint_trajectory.points.size(); ++i)
+  {
+      for (int j = 0; j < my_plan.trajectory_.joint_trajectory.points[i].positions.size(); ++j)
+      {
+          ZLOG <<i <<": " <<  my_plan.trajectory_.joint_trajectory.points[i].positions[j];
+      }
+
+  }
+
   visual_tools.trigger();
 //完成一次规划，与RViz 界面进行交互，使其点击 next 再继续执行。
   visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window to continue the demo");
